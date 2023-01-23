@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\texture;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class TextureController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -20,7 +20,6 @@ class TextureController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -31,7 +30,6 @@ class TextureController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -42,7 +40,6 @@ class TextureController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\texture  $texture
-     * @return \Illuminate\Http\Response
      */
     public function show(texture $texture)
     {
@@ -53,7 +50,6 @@ class TextureController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\texture  $texture
-     * @return \Illuminate\Http\Response
      */
     public function edit(texture $texture)
     {
@@ -65,7 +61,6 @@ class TextureController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\texture  $texture
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, texture $texture)
     {
@@ -76,7 +71,6 @@ class TextureController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\texture  $texture
-     * @return \Illuminate\Http\Response
      */
     public function destroy(texture $texture)
     {
