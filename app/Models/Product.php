@@ -33,4 +33,8 @@ class Product extends Model
     {
         return $this->belongsTo(Texture::class);
     }
+
+    public function colors(){
+        return $this->belongsToMany(Color::class);
+    }
 }
