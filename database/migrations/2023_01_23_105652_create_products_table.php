@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('description');
             $table->float('price', 5,2);
             $table->string('price_sign', 5);
-            $table->int('rating')->nullable();
+            $table->integer('rating')->nullable();
             $table->string('cover_image')->nullable();
             $table->timestamps();
         });

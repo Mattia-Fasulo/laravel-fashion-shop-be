@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,13 +19,18 @@ class Product extends Model
         return Str::slug($title, '-');
     }
 
-    public static function storeimage($img){
-        $url = 'https:'.$img;
-        $contents = file_get_contents($url);
-        $temp_name = substr($url, strrpos($url, '/') + 1);
-        $name = substr($temp_name, 0, strpos($temp_name, '?')) .'.jpg';
-        $path = 'images/' . $name;
-        Storage::put('images/'.$name, $contents);
-        return $path;
+    public function type():BelongsTo
+    {
+        return $this->belongsTo(Type::class);
+    }
+
+    public function brand():BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function texture():BelongsTo
+    {
+        return $this->belongsTo(Texture::class);
     }
 }
