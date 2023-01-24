@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Texture;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -15,7 +18,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        $types = Type::all();
+        $brands = Brand::all();
+        $textures = Texture::all();
+        // dd($products);
+
+        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'));
     }
 
     /**
@@ -44,7 +52,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.show', compact('product'));
     }
 
     /**
