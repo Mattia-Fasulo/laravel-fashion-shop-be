@@ -7,3 +7,21 @@ $fa-font-path:"../webfonts";
 @import "@fortawesome/fontawesome-free/scss/solid";
 @import "@fortawesome/fontawesome-free/scss/brands";
 @import 'bootstrap/scss/bootstrap';
+
+
+
+body{
+    a{
+        text-decoration: none;
+    }
+}
+
+#indexProduct{
+    .brand{
+        font-size: 80%;
+        font-weight: 700;
+    }
+}
+#showProduct{
+
+}
