@@ -6,8 +6,11 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Texture;
 use App\Models\Type;
+use App\Models\Color;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Http\Requests\StoreProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -32,7 +35,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        $types = Type::all();
+        $brands = Brand::all();
+        $textures = Texture::all();
+        $colors = Color::all();
+
+        return view('admin.products.create', compact('products','types', 'brands', 'textures','colors'));
     }
 
     /**
@@ -40,9 +49,31 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $data = $request->validated();
+        $slug = Product::generateSlug($request->name);
+        $data['slug'] = $slug;
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::put('projects_images', $request->cover_image);
+            $data['cover_image'] = $path;
+        }
+
+        $new_product = Product::create($data);
+
+        if ($request->has('types')) {
+            $new_product->types()->attach($request->types);
+        }
+
+        if ($request->has('brands')) {
+            $new_product->tags()->attach($request->brands);
+        }
+
+        if ($request->has('textures')) {
+            $new_product->tags()->attach($request->textures);
+        }
+
+        return redirect()->route('admin.projects.show', $new_product->slug);
     }
 
     /**
