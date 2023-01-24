@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.test')
 @section('content')
     <ul>
         @foreach ($products as $product)
