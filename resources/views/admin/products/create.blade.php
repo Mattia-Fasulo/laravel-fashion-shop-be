@@ -111,7 +111,7 @@
                                 <div class="form-check form-check-inline">
 
 
-                                    <input type="checkbox" class="form-check-input" id="{{ $color->id }}" name="tags[]"
+                                    <input type="checkbox" class="form-check-input" id="{{ $color->id }}" name="colors[]"
                                         value="{{ $color->id }}">
 
                                     <label class="form-check-label" for="{{ $color->id }}">{{ $color->name }}</label>
@@ -124,7 +124,7 @@
 
                         <div class="mb-3">
                             <label class="form-check-label d-block" for="price">Price</label>
-                            <input id="price" type=number step=0.01 />
+                            <input id="price" name="price" type=number class="form-control" step=0.01 min="0"/>
                         </div>
 
                         <div class="mb-3 w-25">

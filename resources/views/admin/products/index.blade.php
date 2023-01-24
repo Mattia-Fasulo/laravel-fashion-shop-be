@@ -35,8 +35,8 @@
 
                                         {{-- edit part --}}
                                         <div class="edit col-2 row row-cols-2">
-                                            <a href="#" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
-                                            <form action="" method="post">
+                                            <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
+                                            <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-secondary my-delete" type="submit"><i class="fa-regular fa-trash-can"></i></button>
