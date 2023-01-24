@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.test')
 @section('content')
     <section>
         <div class="container post-list">
