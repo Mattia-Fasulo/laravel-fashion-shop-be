@@ -123,7 +123,7 @@ class ProductController extends Controller
             if ($product->overview_image) {
                 Storage::delete($product->overview_image);
             }
-            $path = Storage::put('projects_images', $request->cover_image);
+            $path = Storage::disk('public')->put('images', $request->cover_image);
             $data['cover_image'] = $path;
         }
 
