@@ -7,9 +7,6 @@
                 <div class="card-header d-flex align-items-baseline justify-content-between">
                     <h1>{{$product->name}}</h1>
                     <div class="info d-flex">
-                        {{-- @if ($product->type_id)
-                            <div class="sub me-3" title="Type">{{$product->type_id ? $product->type->name : ''}}</div>
-                        @endif --}}
                         <sub class="text-capitalize">
                             @if ($product->type_id)
                                 <span title="Type">{{$product->type->name}}</span>
@@ -27,6 +24,12 @@
                             <div>{{$product->description}}</div>
                             <div class="price">
                                 <h3>{{$product->price}}{{$product->price_sign}}</h3>
+                            </div>
+                            <div class="productPalette w-25 d-flex justify-content-around">
+                                @foreach ($product->colors as $color)
+                                    <div title="{{$color->name }}"><i class="fa-solid fa-circle" style="color: {{$color->hex_value }}"></i></div>
+                                @endforeach
+                                
                             </div>
                         </div>
                         @if ($product->cover_image)
