@@ -41,7 +41,7 @@ class ProductController extends Controller
         $textures = Texture::all();
         $colors = Color::all();
 
-        return view('admin.products.create', compact('products','types', 'brands', 'textures','colors'));
+        return view('admin.products.create', compact('products', 'types', 'brands', 'textures', 'colors'));
     }
 
     /**
@@ -52,6 +52,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $request->validated();
+        // dd($request);
         $slug = Product::generateSlug($request->name);
         $data['slug'] = $slug;
         if ($request->hasFile('cover_image')) {
@@ -70,10 +71,14 @@ class ProductController extends Controller
         }
 
         if ($request->has('textures')) {
-            $new_product->tags()->attach($request->textures);
+            $new_product->textures()->attach($request->textures);
         }
+        if ($request->has('colors')) {
+            $new_product->colors()->attach($request->colors);
+        }
+        //dd($new_product);
 
-        return redirect()->route('admin.projects.show', $new_product->slug);
+        return redirect()->route('admin.products.show', $new_product->slug);
     }
 
     /**

@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Color extends Model
 {
@@ -18,7 +20,8 @@ class Color extends Model
         return Str::slug($title, '-');
     }
 
-    public function products(){
+    public function products(): BelongsToMany
+    {
         return $this->belongsToMany(Product::class);
     }
 }
