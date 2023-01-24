@@ -31,7 +31,9 @@ class UpdateProductRequest extends FormRequest
             'type_id' => 'nullable|exists:types,id',
             'texture_id' => 'nullable|exists:textures,id',
             'brand_id' => 'nullable|exists:brands,id',
-            'rating' => 'nullable'
+            'rating' => 'nullable',
+            'price' => 'nullable',
+            'price_sign' => 'nullable'
         ];
     }
 }

@@ -128,6 +128,7 @@ class ProductController extends Controller
         }
 
         $product->update($data);
+
         if ($request->has('types')) {
             $product->types()->sync($request->types);
         }

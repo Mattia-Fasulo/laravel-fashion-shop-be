@@ -15,7 +15,7 @@
             @endif
         </div> --}}
     <div class="container mt-3 ">
-        <h1 class="mx-4">Create Product</h1>
+        <h1 class="mx-4">Edit Product</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.products.store') }}" method="POST" class="p-4" enctype="multipart/form-data">
@@ -24,7 +24,7 @@
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" required maxlength="150" minlength="3" value="{{ old('name', $product->name) }}>
+                            name="name" required maxlength="150" minlength="3" value="{{ old('name', $product->name) }}"   >
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -33,7 +33,8 @@
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" value="{{ old('description', $product->description) }}></textarea>
+                        <textarea class="form-control" id="description" name="description" >{{ old('description', $product->description) }}
+                        </textarea>
                     </div>
 
                     <div >
@@ -117,7 +118,7 @@
 
 
                                     <input type="checkbox" class="form-check-input" id="{{ $color->id }}" name="colors[]"
-                                        value="{{ $color->id }} {{in_array( $tag->id, old("colors", []) ) ? 'checked' : ''}}">
+                                        value="{{ $color->id }} {{in_array( $color->id, old("colors", []) ) ? 'checked' : ''}}">
 
                                     <label class="form-check-label" for="{{ $color->id }}">{{ $color->name }}</label>
                                 </div>
@@ -129,7 +130,7 @@
 
                         <div class="mb-3">
                             <label class="form-check-label d-block" for="price">Price</label>
-                            <input id="price" type=number step=0.01 value="{{ old('price', $product->price) }}/>
+                            <input id="price" name="price" type=number step=0.01 value="{{ old('price', $product->price) }}/>
                         </div>
 
                         <div class="mb-3 w-25">
