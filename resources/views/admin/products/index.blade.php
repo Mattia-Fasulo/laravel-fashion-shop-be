@@ -20,14 +20,16 @@
                                     <li class="row row-cols-2 my-1">
                                         <a href="{{route('admin.products.show', $product->slug)}}" title="View product" class="col-10">
                                             {{$product->id}} {{$product->name}} <span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span>
-                                            <sub class="text-capitalize">
-                                                @if ($product->type_id)
-                                                    <span title="Type">{{$product->type->name}}</span>
-                                                @endif
-                                                @if ($product->texture_id)
-                                                    <span title="Texture">{{$product->texture->name}}</span>
-                                                @endif
-                                            </sub>
+                                           
+                                                @if ($product->type_id && $product->texture_id)
+                                                    <sub class="text-capitalize">
+                                                        <span title="Type {{Str::lower($product->type->name) == $product->texture->name ? '& Texture' : ''}}">{{$product->type->name}}</span>
+                                                        
+                                                        @if (Str::lower($product->type->name) != $product->texture->name)
+                                                            <span title="Texture">{{$product->texture->name}}</span>
+                                                        @endif
+                                                    </sub>
+                                                @endif                                           
                                             
                                         </a> 
 
