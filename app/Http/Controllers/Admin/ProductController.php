@@ -63,17 +63,17 @@ class ProductController extends Controller
 
         $new_product = Product::create($data);
 
-        if ($request->has('types')) {
-            $new_product->types()->attach($request->types);
-        }
+        // if ($request->has('types')) {
+        //     $new_product->types()->attach($request->types);
+        // }
 
-        if ($request->has('brands')) {
-            $new_product->tags()->attach($request->brands);
-        }
+        // if ($request->has('brands')) {
+        //     $new_product->tags()->attach($request->brands);
+        // }
 
-        if ($request->has('textures')) {
-            $new_product->textures()->attach($request->textures);
-        }
+        // if ($request->has('textures')) {
+        //     $new_product->textures()->attach($request->textures);
+        // }
         if ($request->has('colors')) {
             $new_product->colors()->attach($request->colors);
         }
@@ -129,22 +129,23 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        if ($request->has('types')) {
-            $product->types()->sync($request->types);
-        }
+        // if ($request->has('types')) {
+        //     $product->types()->sync($request->types);
+        // }
 
-        if ($request->has('brands')) {
-            $product->tags()->sync($request->brands);
-        }
+        // if ($request->has('brands')) {
+        //     $product->tags()->sync($request->brands);
+        // }
 
-        if ($request->has('textures')) {
-            $product->textures()->sync($request->textures);
-        }
+        // if ($request->has('textures')) {
+        //     $product->textures()->sync($request->textures);
+        // }
+
         if ($request->has('colors')) {
             $product->colors()->sync($request->colors);
+        } else {
+            $product->colors()->sync([]);
         }
-        //dd($new_product);
-
         return redirect()->route('admin.products.index')->with('message', "$product->name updated");
     }
 

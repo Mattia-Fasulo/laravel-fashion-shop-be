@@ -18,9 +18,9 @@
         <h1 class="mx-4">Edit Product</h1>
         <div class="row bg-white">
             <div class="col-12">
-                <form action="{{ route('admin.products.store') }}" method="POST" class="p-4" enctype="multipart/form-data">
+                <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" class="p-4" enctype="multipart/form-data">
                     @csrf
-
+                    @method('PUT')
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
@@ -113,16 +113,21 @@
 
                          <div class="mb-3">
                              <label for="color" class="form-label">Select Color</label> <br>
-                            @foreach ($colors as $color)
-                                <div class="form-check form-check-inline">
+                            {{-- @foreach ($colors as $color) --}}
+                                <div class="form-check form-check-inline ">
+                                        @foreach ($colors as $color)
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input rounded-pill" type="checkbox" id="color-{{$color->id}}"  name="colors[]" value="{{$color->id}}" @foreach($product->colors as $prod_color){{{$prod_color->id == $color->id ? 'checked' : ''}}}@endforeach>
+                                                <label class="form-check-label" for="color-{{$color->id}}">{{$color->name}}</label>
+                                            </div>
+                                        @endforeach
 
+                                    {{-- <input type="checkbox" class="form-check-input" id="{{ $color->id }}" name="colors[]"
+                                        value="{{ $color->id }} "{{in_array( $color->id, old("colors", []) ) ? 'checked' : ''}}>
 
-                                    <input type="checkbox" class="form-check-input" id="{{ $color->id }}" name="colors[]"
-                                        value="{{ $color->id }} {{in_array( $color->id, old("colors", []) ) ? 'checked' : ''}}">
-
-                                    <label class="form-check-label" for="{{ $color->id }}">{{ $color->name }}</label>
+                                    <label class="form-check-label" for="{{ $color->id }}">{{ $color->name }}</label> --}}
                                 </div>
-                            @endforeach
+                            {{-- @endforeach --}}
                             @error('color')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -130,7 +135,7 @@
 
                         <div class="mb-3">
                             <label class="form-check-label d-block" for="price">Price</label>
-                            <input id="price" name="price" type=number step=0.01 value="{{ old('price', $product->price) }}/>
+                            <input id="price" name="price" type=number step=0.01 value="{{ old('price', $product->price) }}" required >
                         </div>
 
                         <div class="mb-3 w-25">
