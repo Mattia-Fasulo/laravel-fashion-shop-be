@@ -35,7 +35,14 @@
                         @if ($product->cover_image)
                             <div class="body-image col-4 offset-4"><img class="w-100" src="{{asset('storage/'.$product->cover_image)}}" alt=""></div>
                         @endif
-
+                        <div class="edit d-flex justify-content-end">
+                            <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
+                            <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-secondary my-delete" type="submit"><i class="fa-regular fa-trash-can"></i></button>
+                            </form>
+                        </div>
                         
                     </div>
                 </div>
