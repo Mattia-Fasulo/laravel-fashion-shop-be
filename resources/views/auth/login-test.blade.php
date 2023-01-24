@@ -53,25 +53,43 @@
                             </a>
                             <h3>Sign In</h3>
                         </div>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
                         <div class="form-floating mb-3">
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             <label for="floatingInput">{{ __('E-Mail Address') }}</label>
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                         </div>
                         <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"  id="floatingPassword" placeholder="Password" name="password" required autocomplete="current-password">
                             <label for="floatingPassword">Password</label>
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="exampleCheck1">Remember</label>
                             </div>
-                            <a href="">Forgot Password</a>
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                                @endif
+                            {{-- <a href="">Forgot Password</a> --}}
                         </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">{{ __('Login') }}</button>
+                        {{-- <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p> --}}
+                        </form>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login-test');
 });
 
 // Route::get('/dashboard', function () {
@@ -36,3 +36,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('{any?}', function () {
+    return redirect()->route('admin.dashboard');
+})->where('any', '.*');
