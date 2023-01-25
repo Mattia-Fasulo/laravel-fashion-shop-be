@@ -1,6 +1,6 @@
 import './bootstrap';
 import '~resources/scss/app.scss';
-// import * as bootstrap from 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import.meta.glob([
     '../img/**',
     '../fonts/**'
@@ -30,3 +30,11 @@ deleteSubmitButtons.forEach((button) => {
     })
 });
 
+
+//               multiple select
+$( '#multiple-select-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+} );
