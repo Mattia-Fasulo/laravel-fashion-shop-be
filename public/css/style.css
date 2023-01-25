@@ -308,3 +308,10 @@
     border-radius: 25px;
     /* border: 1px solid #dd2c2c; */
   }
+  .object-cover {
+      object-fit: cover !important;
+      object-fit: center center;
+  }
+  .overflow-hidden{
+    overflow: hidden !important;
+  }

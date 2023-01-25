@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.test')
 
 
 
 @section('content')
+
     {{-- <div>
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -14,48 +15,68 @@
             </div>
             @endif
         </div> --}}
-    <div class="container mt-3 ">
-        <h1 class="mx-4">Create Product</h1>
-        <div class="row bg-white">
-            <div class="col-12">
-                <form action="{{ route('admin.products.store') }}" method="POST" class="p-4" enctype="multipart/form-data">
-                    @csrf
+        
+    <div class="container-fluid p-4 bg-dark">
+        <div class="row g-4">
+            <div class="col-sm-12">
 
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" required maxlength="150" minlength="3">
+                
+                <div class="bg-secondary text-center rounded p-4">
+                
+                <h1 class="py-3">Create Product</h1>
+                
+                <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                {{-- input nome prodotto  --}}
+
+                <div id="input-name" class="mb-3 ">
+                    <label for="name" class="form-label">Nome del Prodotto</label>
+                    <input type="text" class="form-control w-50 m-auto  @error('name') is-invalid @enderror" id="name" name="name" required maxlength="150" minlength="3">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                         <div class="form-text">* Minimum 3 characters and maximum 150 characters</div>
-                    </div>
+                </div>
+                
+                <div id="description" class="mb-3">
+                    <label for="description" class="form-label">Descrizione</label>
+                    <textarea class="form-control" id="description" name="description" rows="10" ></textarea>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description"></textarea>
-                    </div>
+                
+                {{-- input immagine con preview  --}}
+                
+                <div class="row pb-3 overflow-hidden justify-content-center" >
 
-                    <div >
 
-                        <label for="cover_image" class="form-label">Insert an Image</label>
-                        {{-- <input type="file" name="cover_image" id="create_cover_image"
-                            class="form-control  @error('cover_image') is-invalid @enderror"> --}}
-                        <div class=" mb-3 w-50">
+                    <div class="col-4" >
 
-                            <div >
+                        <div class="d-flex flex-column">
 
-                                <input type="file" name="cover_image" id="cover_image"
-                                    class="form-control  @error('cover_image') is-invalid @enderror">
-                                @error('cover_image')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                            <label for="cover_image" class="form-label">Insert an Image</label>
+                           
+                            <div class="mb-3">
+                                
+                                    <input type="file" name="cover_image" id="cover_image"
+                                        class="form-control  @error('cover_image') is-invalid @enderror">
+                                    @error('cover_image')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                
                             </div>
 
+                            <div class="overflow-hidden rounded" style="max-height: 280px;">
+                                <img id="uploadPreview" class="img-fluid" src="https://via.placeholder.com/600x400">
+                            </div>
 
                         </div>
+                    </div>
 
-                        <div class="mb-3 w-25">
+                    <div class="col-4 "> 
+                        
+                        {{-- select type  --}}
+                        
+                        <div class="mb-3">
                             <label for="type_id" class="form-label">Select Type</label>
                             <select name="type_id" id="type_id"
                                 class="form-control @error('type_id') is-invalid @enderror" required>
@@ -71,7 +92,9 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3 w-25">
+                        {{-- select brand --}}
+                        
+                        <div class="mb-3">
                             <label for="brand_id" class="form-label">Select Brand</label>
                             <select name="brand_id" id="brand_id"
                                 class="form-control @error('brand_id') is-invalid @enderror" required>
@@ -87,7 +110,9 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3 w-25">
+                        {{-- select texture --}}
+                        
+                        <div class="mb-3">
                             <label for="texture_id" class="form-label">Select Texture</label>
                             <select name="texture_id" id="texture_id"
                                 class="form-control @error('texture_id') is-invalid @enderror" required>
@@ -102,10 +127,11 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
+                    </div>
+                </div>  
                         {{-- ------------------colori-------------- --}}
-
-                         <div class="mb-3">
+                <div class="row text-start">
+                    <div class="mb-3">
                              <label for="color" class="form-label">Select Color</label> <br>
                             @foreach ($colors as $color)
                                 <div class="form-check form-check-inline">
@@ -146,6 +172,8 @@
 
                         <button type="submit" class="btn btn-dark">Submit</button>
                         <button type="reset" class="btn btn-light border-dark">Reset</button>
+
+                </div>
                 </form>
             </div>
         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.test')
 
 @section('content')
-    <section class="my-5" id=showProduct>
+    <section id=showProduct>
         <div class="container">
             <div class="card">
                 <div class="card-header d-flex align-items-baseline justify-content-between">
@@ -27,7 +27,7 @@
                             </div>
                             <div class="productPalette w-25 d-flex justify-content-around">
                                 @foreach ($product->colors as $color)
-                                    <div title="{{$color->name }}"><i class="fa-solid fa-circle" style="color: {{$color->hex_value }}"></i></div>
+                                    <div title="{{$color->name }}"><i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></div>
                                 @endforeach
                                 
                             </div>
