@@ -146,7 +146,7 @@ class ProductController extends Controller
         } else {
             $product->colors()->sync([]);
         }
-        return redirect()->route('admin.products.index')->with('message', "$product->name updated");
+        return redirect()->route('admin.products.show', $product->slug)->with('message', "$product->name updated");
     }
 
     /**

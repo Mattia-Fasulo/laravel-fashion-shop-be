@@ -2,9 +2,9 @@
 @section('content')
     <section id="indexProduct">
         
-        <div class="container-fluid px-4 bg-dark rounded">
+        <div class="container-fluid p-4 bg-dark ">
         
-            <div class="row my-3 justify-content-center">
+            <div class="row justify-content-center">
                 
                 <div class="col-12">
                     
@@ -15,7 +15,10 @@
 
                     <div class="table-responsive bg-secondary p-3 rounded">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
-                                <h4 class="py-3">Product list:</h4>
+                                <div class="d-flex justify-content-between py-2">
+                                    <h4 class="">Product list:</h4>
+                                    <a href="{{route('admin.products.create')}}" class="p-2 rounded"><i class="fas fa-plus"></i> Aggiungi Prodotto </a>
+                                </div>
                                 <thead>
                                     <tr class="text-white">
                                         <th scope="col"><input class="form-check-input" type="checkbox"></th>
@@ -81,7 +84,7 @@
 
 
 
-                        <div class="card-body">
+                        {{-- <div class="card-body">
                             <ul class="container-fluid">
                                 @foreach ($products as $product)
                                     <li class="row row-cols-2 my-1">
@@ -98,10 +101,10 @@
                                                     </sub>
                                                 @endif                                           
                                             
-                                        </a> 
+                                        </a>  --}}
 
                                         {{-- edit part --}}
-                                        <div class="edit col-2 row row-cols-2">
+                                        {{-- <div class="edit col-2 row row-cols-2">
                                             <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
                                             <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
                                                 @csrf
@@ -112,7 +115,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </div>
+                        </div> --}}
                    
                 </div>
             </div>
