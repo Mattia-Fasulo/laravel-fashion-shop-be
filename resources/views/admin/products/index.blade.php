@@ -111,7 +111,7 @@
                                         </a>
 
                                         {{-- edit part --}}
-                                        <div class="edit col-2 row row-cols-2">
+                                        {{-- <div class="edit col-2 row row-cols-2">
                                             <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
                                             <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
                                                 @csrf
@@ -122,9 +122,9 @@
                                         </div>
                                         @include('partials.modal-delete')
                                     </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                                {{-- @endforeach --}}
+                        
+                        
 
                 </div>
             </div>
