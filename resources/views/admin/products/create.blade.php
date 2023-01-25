@@ -48,7 +48,6 @@
                 
                 <div class="row pb-3 overflow-hidden justify-content-center" >
 
-
                     <div class="col-4" >
 
                         <div class="d-flex flex-column">
@@ -127,6 +126,30 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                    <div class="d-flex gap-1">
+                        {{-- price input --}}
+                        <div class="mb-3">
+                            {{-- <label class="form-check-label d-block" for="price">Price</label> --}}
+                            <input placeholder="price" id="price" name="price" type=number class="form-control" step=0.01 min="0"/>
+                        </div>
+
+                        {{-- seleziona valuta (currenty) --}}
+                        <div class="mb-3 ">
+
+                            <select name="price_sign" id="price_sign"
+                                class="form-control text-center @error('price_sign') is-invalid @enderror" required>
+                                <option value="">Val</option>
+
+                                <option value="$" > $ </option>
+                                <option value="£"> £ </option>
+                                <option value="€" selected> € </option>
+
+                            </select>
+                            @error('price_sign')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                     </div>
                 </div>  
                         {{-- ------------------colori-------------- --}}
@@ -148,26 +171,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-check-label d-block" for="price">Price</label>
-                            <input id="price" name="price" type=number class="form-control" step=0.01 min="0"/>
-                        </div>
-
-                        <div class="mb-3 w-25">
-
-                            <select name="price_sign" id="price_sign"
-                                class="form-control @error('price_sign') is-invalid @enderror" required>
-                                <option value="">Select price sign</option>
-
-                                <option value="$"> $ </option>
-                                <option value="£"> £ </option>
-                                <option value="€"> € </option>
-
-                            </select>
-                            @error('price_sign')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        
 
 
                         <button type="submit" class="btn btn-dark">Submit</button>
