@@ -24,6 +24,7 @@
                                         <th scope="col">Customer</th>
                                         <th scope="col">Controls</th>
                                         <th scope="col">Texture</th>
+                                        <th scope="col">Type</th>
                                         <th scope="col">View</th>
                                     </tr>
                                 </thead>
@@ -56,6 +57,9 @@
                                         <td>{{$product->id}}</td>
                                         <td>{{$product->name}}</td>
                                         <td><span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span></td>
+                                        <td><span title="Texture">{{$product->texture->name?? ''}}</span></td>
+                                        <td><span title="Texture">{{$product->type->name?? ''}}</span></td>
+                                        <td><a class="btn btn-sm btn-primary" href="{{route('admin.products.show', $product->slug)}}">Detail</a></td>
                                         <td class="d-flex gap-3 justify-content-center">
                                             <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></a>
                                             <div class="edit">
@@ -66,8 +70,6 @@
                                             </form>
                                             </div> 
                                         </td>
-                                        <td><span title="Texture">{{$product->texture->name?? ''}}</span></td>
-                                        <td><a class="btn btn-sm btn-primary" href="{{route('admin.products.show', $product->slug)}}">Detail</a></td>
                                     </tr>
 
                                     @endforeach
