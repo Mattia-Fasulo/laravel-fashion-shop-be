@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
+
 class ProductController extends Controller
 {
     public function index()
@@ -14,6 +15,16 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'results' => $products
+        ]);
+    }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->with('brand','texture','type','colors')->get();
+
+        return response()->json([
+            'success' => true,
+            'results' => $product
         ]);
     }
 }
