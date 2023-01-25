@@ -16,4 +16,14 @@ class ProductController extends Controller
             'results' => $products
         ]);
     }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->get();
+
+        return response()->json([
+            'success' => true,
+            'results' => $product
+        ]);
+    }
 }
