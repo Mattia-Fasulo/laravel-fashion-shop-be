@@ -1,18 +1,84 @@
 @extends('layouts.test')
 @section('content')
-    <section class="my-5" id="indexProduct">
-        <div class="container post-list">
-            @if(session()->has('message'))
-                <div class="alert alert-success text-primary mb-3 mt-3">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
+    <section id="indexProduct">
+        
+        <div class="container-fluid px-4 bg-dark rounded">
+        
             <div class="row my-3 justify-content-center">
+                
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Product list:</h4>
-                        </div>
+                    
+                        
+                    
+                    
+                    {{--inizio tabella nuova --}}
+
+                    <div class="table-responsive bg-secondary p-3 rounded">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                <h4 class="py-3">Product list:</h4>
+                                <thead>
+                                    <tr class="text-white">
+                                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Controls</th>
+                                        <th scope="col">Texture</th>
+                                        <th scope="col">View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($products as $product)
+                                    <tr>
+                                        {{-- old --}}
+                                        {{-- <a href="{{route('admin.products.show', $product->slug)}}" title="View product" class="col-10">
+                                            {{$product->id}} {{$product->name}} <span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span> --}}
+                                           
+                                                {{-- @if ($product->type_id && $product->texture_id)
+                                                    <sub class="text-capitalize"> --}}
+
+                                                    {{-- ????? --}}
+                                                
+                                                        {{-- <span title="Type {{Str::lower($product->type->name) == $product->texture->name ? '& Texture' : ''}}">{{$product->type->name}}</span> --}}
+
+                                                    {{-- end ????? --}}
+
+                                                        {{-- @if (Str::lower($product->type->name) != $product->texture->name)
+                                                            <span title="Texture">{{$product->texture->name}}</span>
+                                                        @endif
+                                                    </sub>
+                                                @endif                                           
+                                            
+                                        </a>  --}}
+                                        {{-- nuova riga tabella --}}
+
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>{{$product->id}}</td>
+                                        <td>{{$product->name}}</td>
+                                        <td><span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span></td>
+                                        <td class="d-flex gap-3 justify-content-center">
+                                            <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></a>
+                                            <div class="edit">
+                                            <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-primary my-delete" type="submit"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                            </div> 
+                                        </td>
+                                        <td><span title="Texture">{{$product->texture->name?? ''}}</span></td>
+                                        <td><a class="btn btn-sm btn-primary" href="{{route('admin.products.show', $product->slug)}}">Detail</a></td>
+                                    </tr>
+
+                                    @endforeach
+                                    
+                                </tbody>
+                            </table>
+
+                            {{-- fine tabella --}}
+
+
+
                         <div class="card-body">
                             <ul class="container-fluid">
                                 @foreach ($products as $product)
@@ -45,7 +111,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

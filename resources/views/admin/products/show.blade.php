@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.test')
 
 @section('content')
     <section class="my-5" id=showProduct>

@@ -33,9 +33,18 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('products', ProductController::class)->parameters(['products' => 'product:slug']);
+    Route::get(
+        'bottons',
+        function () {
+            //importare il layout dei bottoni
+            return view('admin.partials.bottons');
+
+        }
+    )->name('bottons');
 });
 
 require __DIR__ . '/auth.php';
+
 
 Route::get('{any?}', function () {
     return redirect()->route('admin.dashboard');
