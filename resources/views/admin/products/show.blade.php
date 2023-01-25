@@ -16,7 +16,7 @@
                             @endif
                         </sub>
                     </div>
-                    
+
                 </div>
                 <div class="card-body">
                     <div class="product-body row">
@@ -29,7 +29,7 @@
                                 @foreach ($product->colors as $color)
                                     <div title="{{$color->name }}"><i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></div>
                                 @endforeach
-                                
+
                             </div>
                         </div>
                         @if ($product->cover_image)
@@ -43,11 +43,12 @@
                                 <button class="btn btn-secondary my-delete" type="submit"><i class="fa-regular fa-trash-can"></i></button>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
             <a href="{{route('admin.products.index')}}" class="btn btn-primary my-3">Show all Products</a>
+            @include('partials.modal-delete')
         </div>
     </section>
 @endsection

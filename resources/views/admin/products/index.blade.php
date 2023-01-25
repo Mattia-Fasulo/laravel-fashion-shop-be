@@ -1,24 +1,25 @@
 @extends('layouts.test')
 @section('content')
     <section id="indexProduct">
-        
-        <div class="container-fluid p-4 bg-dark ">
-        
-            <div class="row justify-content-center">
-                
+
+        <div class="container-fluid px-4 bg-dark rounded">
+
+            <div class="row my-3 justify-content-center">
+
                 <div class="col-12">
-                    
-                        
-                    
-                    
-                    {{--inizio tabella nuova --}}
+
+
+                    @if (session()->has('message'))
+                        <div class="alert alert-success mx-2 mb-3">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+
+                    {{-- inizio tabella nuova --}}
 
                     <div class="table-responsive bg-secondary p-3 rounded">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
-                                <div class="d-flex justify-content-between py-2">
-                                    <h4 class="">Product list:</h4>
-                                    <a href="{{route('admin.products.create')}}" class="p-2 rounded"><i class="fas fa-plus"></i> Aggiungi Prodotto </a>
-                                </div>
+                                <h4 class="py-3">Product list:</h4>
                                 <thead>
                                     <tr class="text-white">
                                         <th scope="col"><input class="form-check-input" type="checkbox"></th>
@@ -37,50 +38,56 @@
                                         {{-- old --}}
                                         {{-- <a href="{{route('admin.products.show', $product->slug)}}" title="View product" class="col-10">
                                             {{$product->id}} {{$product->name}} <span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span> --}}
-                                           
-                                                {{-- @if ($product->type_id && $product->texture_id)
+
+                                        {{-- @if ($product->type_id && $product->texture_id)
                                                     <sub class="text-capitalize"> --}}
 
-                                                    {{-- ????? --}}
-                                                
-                                                        {{-- <span title="Type {{Str::lower($product->type->name) == $product->texture->name ? '& Texture' : ''}}">{{$product->type->name}}</span> --}}
+                                        {{-- ????? --}}
 
-                                                    {{-- end ????? --}}
+                                        {{-- <span title="Type {{Str::lower($product->type->name) == $product->texture->name ? '& Texture' : ''}}">{{$product->type->name}}</span> --}}
 
-                                                        {{-- @if (Str::lower($product->type->name) != $product->texture->name)
+                                        {{-- end ????? --}}
+
+                                        {{-- @if (Str::lower($product->type->name) != $product->texture->name)
                                                             <span title="Texture">{{$product->texture->name}}</span>
                                                         @endif
                                                     </sub>
-                                                @endif                                           
-                                            
+                                                @endif
+
                                         </a>  --}}
                                         {{-- nuova riga tabella --}}
 
                                         <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>{{$product->id}}</td>
-                                        <td>{{$product->name}}</td>
-                                        <td><span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span></td>
-                                        <td><span title="Texture">{{$product->texture->name?? ''}}</span></td>
-                                        <td><span title="Texture">{{$product->type->name?? ''}}</span></td>
-                                        <td><a class="btn btn-sm btn-primary" href="{{route('admin.products.show', $product->slug)}}">Detail</a></td>
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td><span class="text-capitalize brand"
+                                                title="Brand: {{ $product->brand->name }}">{{ $product->brand->name }}</span>
+                                        </td>
+                                        <td><span title="Texture">{{ $product->texture->name ?? '' }}</span></td>
+                                        <td><span title="Texture">{{ $product->type->name ?? '' }}</span></td>
+                                        <td><a class="btn btn-sm btn-primary"
+                                                href="{{ route('admin.products.show', $product->slug) }}">Detail</a></td>
                                         <td class="d-flex gap-3 justify-content-center">
-                                            <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{ route('admin.products.edit', ['product' => $product->slug]) }}"
+                                                class="btn btn-dark"><i class="fas fa-pencil-alt"></i></a>
                                             <div class="edit">
-                                            <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-primary my-delete" type="submit"><i class="fas fa-trash"></i></button>
-                                            </form>
-                                            </div> 
+                                                <form
+                                                    action="{{ route('admin.products.destroy', ['product' => $product->slug]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-primary my-delete" type="submit"><i
+                                                            class="fas fa-trash"></i></button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
+                                @endforeach
 
-                                    @endforeach
-                                    
-                                </tbody>
-                            </table>
+                            </tbody>
+                        </table>
 
-                            {{-- fine tabella --}}
+                        {{-- fine tabella --}}
 
 
 
@@ -90,33 +97,35 @@
                                     <li class="row row-cols-2 my-1">
                                         <a href="{{route('admin.products.show', $product->slug)}}" title="View product" class="col-10">
                                             {{$product->id}} {{$product->name}} <span class="text-capitalize brand" title="Brand: {{$product->brand->name}}">{{$product->brand->name}}</span>
-                                           
+
                                                 @if ($product->type_id && $product->texture_id)
                                                     <sub class="text-capitalize">
                                                         <span title="Type {{Str::lower($product->type->name) == $product->texture->name ? '& Texture' : ''}}">{{$product->type->name}}</span>
-                                                        
+
                                                         @if (Str::lower($product->type->name) != $product->texture->name)
                                                             <span title="Texture">{{$product->texture->name}}</span>
                                                         @endif
                                                     </sub>
-                                                @endif                                           
-                                            
-                                        </a>  --}}
+                                                @endif
+
+                                        </a>
 
                                         {{-- edit part --}}
-                                        {{-- <div class="edit col-2 row row-cols-2">
+                                        <div class="edit col-2 row row-cols-2">
                                             <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
                                             <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-secondary my-delete" type="submit"><i class="fa-regular fa-trash-can"></i></button>
+                                                <button class="btn btn-secondary my-delete" type="submit"><i
+                                                        class="fa-regular fa-trash-can"></i></button>
                                             </form>
-                                        </div> 
+                                        </div>
+                                        @include('partials.modal-delete')
                                     </li>
                                 @endforeach
                             </ul>
-                        </div> --}}
-                   
+                        </div>
+
                 </div>
             </div>
         </div>

@@ -118,15 +118,20 @@
                                         @foreach ($colors as $color)
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input rounded-pill" type="checkbox" id="color-{{$color->id}}"  name="colors[]" value="{{$color->id}}" @foreach($product->colors as $prod_color){{{$prod_color->id == $color->id ? 'checked' : ''}}}@endforeach>
-                                                <label class="form-check-label" for="color-{{$color->id}}">{{$color->name}}</label>
+                                                <label class="form-check-label" for="color-{{$color->id}}">{{$color->name}} <i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></label>
+                                            
+                                            
                                             </div>
                                         @endforeach
-
-                                    {{-- <input type="checkbox" class="form-check-input" id="{{ $color->id }}" name="colors[]"
-                                        value="{{ $color->id }} "{{in_array( $color->id, old("colors", []) ) ? 'checked' : ''}}>
-
-                                    <label class="form-check-label" for="{{ $color->id }}">{{ $color->name }}</label> --}}
                                 </div>
+
+                                {{-- <select class="form-select" id="multiple-select-field" data-placeholder="Choose anything" multiple>
+                                    @foreach ($colors as $color)
+                                        <option>{{$color->name}}<i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></option>
+                                    @endforeach
+                                </select> --}}
+
+                               @include('admin.partials.multi')
                             {{-- @endforeach --}}
                             @error('color')
                                 <div class="alert alert-danger">{{ $message }}</div>
