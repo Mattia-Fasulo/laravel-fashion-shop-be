@@ -18,7 +18,7 @@
                     {{-- inizio tabella nuova --}}
 
                     <div class="table-responsive bg-secondary p-3 rounded">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <table class="table text-start align-middle table-bordered table-hover ">
                             <div class="d-flex justify-content-between py-2">
                                 <h4 class="">Product list:</h4>
                                 <a href="{{route('admin.products.create')}}" class="p-2 rounded"><i class="fas fa-plus"></i> Aggiungi Prodotto </a>
@@ -89,7 +89,7 @@
 
                             </tbody>
                         </table>
-
+                    </div>
                         {{-- fine tabella --}}
 
 
@@ -128,7 +128,7 @@
                                 {{-- @endforeach --}}
                         
                         
-
+                                
                 </div>
             </div>
         </div>

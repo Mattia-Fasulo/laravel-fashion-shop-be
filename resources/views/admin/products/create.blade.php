@@ -16,12 +16,14 @@
             @endif
         </div> --}}
         
-    <div class="container-fluid p-4 bg-dark">
+    <div class="container-fluid pt-4 px-4 bg-dark ">
         <div class="row g-4">
-            <div class="col-sm-12">
 
-                
-                <div class="bg-secondary text-center rounded p-4">
+            <div class="col-12 ">
+
+                <div class="bg-secondary p-3 rounded" >
+
+                <div class="text-center p-3">
                 
                 <h1 class="py-3">Create Product</h1>
                 
@@ -179,8 +181,10 @@
 
                 </div>
                 </form>
+                    
+                </div>
             </div>
         </div>
     </div>
-
+    </div>
 @endsection
