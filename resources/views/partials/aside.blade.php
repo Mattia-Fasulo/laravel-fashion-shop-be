@@ -1,5 +1,5 @@
-<div class="sidebar bg-secondary pe-4 pb-3">
-    <nav class="navbar  navbar-dark">
+<div class="sidebar bg-secondary  pe-4 pb-3">
+    <nav class="navbar">
         <a href="index.html" class="navbar-brand mx-4 mb-3">
             <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
         </a>
