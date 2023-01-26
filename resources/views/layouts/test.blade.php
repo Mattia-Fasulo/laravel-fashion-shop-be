@@ -14,8 +14,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -36,7 +37,8 @@
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -45,9 +47,8 @@
 
 
         <!-- Sidebar Start -->
-        @if(Auth::user())
-
-        @include('partials.aside')
+        @if (Auth::user())
+            @include('partials.aside')
         @endif
         <!-- Sidebar End -->
 
@@ -60,13 +61,13 @@
 
 
             <!-- Sale & Revenue Start -->
-            
+
             @yield('content')
             <!-- Sale & Revenue End -->
             {{-- @include('partials.tables') --}}
 
-            <!-- Sales Chart Start -->
-            <div class="container-fluid pt-4 px-4">
+            <!-- Sales Chart Start/grafici -->
+            {{-- <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
@@ -87,12 +88,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Sales Chart End -->
 
 
             <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
+            {{-- <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Recent Salse</h6>
@@ -161,12 +162,12 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Recent Sales End -->
 
 
             <!-- Widgets Start -->
-            <div class="container-fluid pt-4 px-4">
+            {{-- <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
@@ -175,7 +176,8 @@
                                 <a href="">Show All</a>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""
+                                    style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h6 class="mb-0">Jhon Doe</h6>
@@ -185,7 +187,8 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""
+                                    style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h6 class="mb-0">Jhon Doe</h6>
@@ -195,7 +198,8 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""
+                                    style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h6 class="mb-0">Jhon Doe</h6>
@@ -205,7 +209,8 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""
+                                    style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h6 class="mb-0">Jhon Doe</h6>
@@ -283,7 +288,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Widgets End -->
 
 
@@ -295,10 +300,10 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <a href="" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-   @include('partials.js-footer')
+    @include('partials.js-footer')
 </body>
 
 </html>
