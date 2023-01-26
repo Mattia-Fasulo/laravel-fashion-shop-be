@@ -17,10 +17,10 @@
             <a href="{{route('admin.dashboard')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
             <a href="{{route('admin.products.index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Products</a>
-            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-server"></i></i>Type</a>
-            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-project-diagram"></i></i>Brand</a>
-            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-layer-group"></i></i>Texture</a>
-            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-palette"></i></i>Color</a>
+            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-server me-2"></i></i>Type</a>
+            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-project-diagram me-2"></i></i>Brand</a>
+            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-layer-group me-2"></i></i>Texture</a>
+            <a href="{{route('admin.products.index')}}" class="nav-item nav-link "><i class="fas fa-palette me-2"></i></i>Color</a>
 
 
             {{-- //--------dropdown---------------// --}}

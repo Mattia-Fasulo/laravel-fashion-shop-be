@@ -66,8 +66,8 @@
                                         <td><span class="text-capitalize brand"
                                                 title="Brand: {{ $product->brand->name }}">{{ $product->brand->name }}</span>
                                         </td>
-                                        <td><span title="Texture">{{ $product->texture->name ?? '' }}</span></td>
-                                        <td><span title="Texture">{{ $product->type->name ?? '' }}</span></td>
+                                        <td><span title="Type">{{ $product->type->name ?? '' }}</span></td>
+                                        <td><span title="Texture" class="text-capitalize">{{ $product->texture->name ?? '' }}</span></td>
                                         <td class="text-center"><a class="btn btn-sm btn-primary "
                                                 href="{{ route('admin.products.show', $product->slug) }}">Detail</a></td>
                                         <td class="d-flex gap-3 justify-content-center text-center">

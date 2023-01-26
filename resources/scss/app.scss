@@ -27,7 +27,7 @@ body{
         border-radius: 0.5rem;
     }
     .imgNselect{
-        
+
         .col-4{
             max-height: 330px;
         }
@@ -38,4 +38,8 @@ body{
         outline: 2px solid $red;
         outline-offset: 4px;
     }
+}
+
+.color-circle {
+    margin-top: 3px;
 }
