@@ -14,17 +14,20 @@
                         <div class="body-text {{ $product->cover_image ? 'col-7' : 'col-12' }}">
                             <div class="my-2">
                                 @if ($product->type_id)
-                                    <span title="Type"><strong class="fs-4">Type:</strong> {{ $product->type->name }}</span>
+                                    <span title="Type"><strong class="fs-4">Type:</strong>
+                                        {{ $product->type->name }}</span>
                                 @endif
                             </div>
                             <div class="my-2">
                                 @if ($product->texture_id)
-                                    <span title="Texture" class="text-capitalize"><strong class="fs-4">Texture:</strong> {{ $product->texture->name }}</span>
+                                    <span title="Texture" class="text-capitalize"><strong class="fs-4">Texture:</strong>
+                                        {{ $product->texture->name }}</span>
                                 @endif
                             </div>
                             <div class="my-2">
                                 @if ($product->brand_id)
-                                    <span title="Brand" class="text-capitalize"><strong class="fs-4">Brand:</strong> {{ $product->brand->name }}</span>
+                                    <span title="Brand" class="text-capitalize"><strong class="fs-4">Brand:</strong>
+                                        {{ $product->brand->name }}</span>
                                 @endif
                             </div>
                             <div class="my-2 d-flex">
@@ -35,14 +38,17 @@
                                 <strong class="fs-4">Price:</strong>
                                 <span class="fs-3">{{ $product->price }} {{ $product->price_sign }}</span>
                             </div>
-                            <div class="productPalette w-25 d-flex justify-content-around my-2">
+                            <div class="my-2 d-flex">
                                 <strong class="fs-4">Colors:</strong>
-                                @foreach ($product->colors as $color)
-                                    <div class="d-flex align-items-center color-circle" title="{{ $color->name }}">
-                                        <i class="fas fa-circle" style="color: {{ $color->hex_value }}"></i>
-                                        </div>
-                                @endforeach
+                                <div class="productPalette w-25 d-flex justify-content-around mx-2">
 
+                                    @foreach ($product->colors as $color)
+                                        <div class="d-flex align-items-center color-circle" title="{{ $color->name }}">
+                                            <i class="fas fa-circle" style="color: {{ $color->hex_value }}"></i>
+                                        </div>
+                                    @endforeach
+
+                                </div>
                             </div>
                         </div>
                         @if ($product->cover_image)
