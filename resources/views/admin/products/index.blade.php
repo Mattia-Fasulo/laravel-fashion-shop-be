@@ -30,13 +30,42 @@
                             </div>
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name
-                                        <form action="{{ route('admin.products.index') }}" method="GET">
-                                            @csrf
-                                            <input type="text" hidden name="nameOrder" id="nameOrder" value="">
-                                        </form>
+                                    <th scope="col">
+                                        {{-- <input class="form-check-input" type="checkbox"> --}}
+                                    </th>
+                                    <th scope="col">
+                                        <div class="d-flex justify-content-between ">
+                                            <span>ID</span>
+                                            <span class="d-flex">
+                                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                                    @csrf
+                                                    <input type="text" hidden name="idOrder" id="idOrder" value="ASC">
+                                                    <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
+                                                </form>
+                                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                                    @csrf
+                                                    <input type="text" hidden name="idOrder" id="idOrder" value="DESC">
+                                                    <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
+                                                </form>
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="d-flex justify-content-between ">
+                                            <span>Name</span>
+                                            <span class="d-flex">
+                                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                                    @csrf
+                                                    <input type="text" hidden name="nameOrder" id="nameOrder" value="ASC">
+                                                    <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
+                                                </form>
+                                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                                    @csrf
+                                                    <input type="text" hidden name="nameOrder" id="nameOrder" value="DESC">
+                                                    <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
+                                                </form>
+                                            </span>
+                                        </div>
                                     </th>
                                     <th scope="col">Customer</th>
                                     <th scope="col">Type</th>

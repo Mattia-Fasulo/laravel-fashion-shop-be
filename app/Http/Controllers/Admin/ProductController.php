@@ -34,6 +34,25 @@ class ProductController extends Controller
             // dd($products);
         }
 
+        if (!empty($request->query('idOrder'))) {
+            // dd($request->query('idOrder'));
+            $myQuery = $request->query('idOrder');
+            $products = Product::orderBy('name', $myQuery)->get();
+        } else {
+            $products = Product::all();
+
+            // dd($products);
+        }
+        if (!empty($request->query('nameOrder'))) {
+            // dd($request->query('prova'));
+            $myQuery = $request->query('nameOrder');
+            $products = Product::orderBy('name', $myQuery)->get();
+        } else {
+            $products = Product::all();
+
+            // dd($products);
+        }
+
         return view('admin.products.index', compact('products', 'types', 'brands', 'textures'));
     }
 
