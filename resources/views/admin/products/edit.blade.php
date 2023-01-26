@@ -52,11 +52,9 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                     </div>
-                                    <div class="media">
-                                        <div class="py-2">
+                                    <div class="media text-center">
                                             <img id="uploadPreview" src="{{ asset('storage/' . $product->cover_image) }}"
-                                            alt="{{ $product->name }}">
-                                        </div>                                       
+                                            alt="{{ $product->name }}">                                      
                                     </div>
                                 </div>
                             </div>

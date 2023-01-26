@@ -33,9 +33,9 @@ body{
         }
     }
     #uploadPreview{
-        border-radius: 0.5rem;
+        // border-radius
         max-height: calc(330px - 90px);
-        outline: 3px double $border;
+        outline: 2px solid $red;
         outline-offset: 4px;
     }
 }

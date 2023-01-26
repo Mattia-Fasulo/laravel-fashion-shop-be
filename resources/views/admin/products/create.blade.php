@@ -55,7 +55,7 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                             </div>
-                            <div class="media">
+                            <div class="media text-center">
                                 <img id="uploadPreview" src="https://via.placeholder.com/600x400">
                             </div>
                         </div>
