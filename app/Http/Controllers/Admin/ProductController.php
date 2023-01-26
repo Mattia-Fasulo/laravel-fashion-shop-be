@@ -50,7 +50,7 @@ class ProductController extends Controller
         }
 
 
-        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'))->with('prova', $request->query('prova'));;
+        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'))->with('prova', "$request->query('prova')");;
     }
 
     /**
