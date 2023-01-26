@@ -19,13 +19,20 @@ class ProductController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
         $types = Type::all();
         $brands = Brand::all();
         $textures = Texture::all();
-        // dd($products);
+        if (!empty($request->query('prova'))) {
+            // dd($request->query('prova'));
+            $myQuery = $request->query('prova');
+            $products = Product::where('name', $myQuery)->get();
+        } else {
+            $products = Product::all();
+
+            // dd($products);
+        }
 
         return view('admin.products.index', compact('products', 'types', 'brands', 'textures'));
     }

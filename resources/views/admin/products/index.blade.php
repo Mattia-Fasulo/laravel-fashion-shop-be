@@ -7,7 +7,11 @@
             <div class="row my-3 justify-content-center">
 
                 <div class="col-12">
-
+                    <form action="{{ route('admin.products.index') }}" method="GET">
+                        @csrf
+                        <input type="text" name="prova" id="prova">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </form>
 
                     @if (session()->has('message'))
                         <div class="alert alert-success mx-2 mb-3">
@@ -21,22 +25,23 @@
                         <table class="table text-start align-middle table-bordered table-hover ">
                             <div class="d-flex justify-content-between py-2">
                                 <h4 class="">Product list:</h4>
-                                <a href="{{route('admin.products.create')}}" class="p-2 rounded"><i class="fas fa-plus"></i> Aggiungi Prodotto </a>
+                                <a href="{{ route('admin.products.create') }}" class="p-2 rounded"><i
+                                        class="fas fa-plus"></i> Aggiungi Prodotto </a>
                             </div>
-                                <thead>
-                                    <tr class="text-white">
-                                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Customer</th>
-                                        <th scope="col">Type</th>
-                                        <th scope="col">Texture</th>
-                                        <th scope="col" class="text-center">View</th>
-                                        <th scope="col" class="text-center">Controls</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($products as $product)
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Texture</th>
+                                    <th scope="col" class="text-center">View</th>
+                                    <th scope="col" class="text-center">Controls</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($products as $product)
                                     <tr>
                                         {{-- old --}}
                                         {{-- <a href="{{route('admin.products.show', $product->slug)}}" title="View product" class="col-10">
@@ -67,7 +72,8 @@
                                                 title="Brand: {{ $product->brand->name }}">{{ $product->brand->name }}</span>
                                         </td>
                                         <td><span title="Type">{{ $product->type->name ?? '' }}</span></td>
-                                        <td><span title="Texture" class="text-capitalize">{{ $product->texture->name ?? '' }}</span></td>
+                                        <td><span title="Texture"
+                                                class="text-capitalize">{{ $product->texture->name ?? '' }}</span></td>
                                         <td class="text-center"><a class="btn btn-sm btn-primary "
                                                 href="{{ route('admin.products.show', $product->slug) }}">Detail</a></td>
                                         <td class="d-flex gap-3 justify-content-center text-center">
@@ -90,11 +96,11 @@
                             </tbody>
                         </table>
                     </div>
-                        {{-- fine tabella --}}
+                    {{-- fine tabella --}}
 
 
 
-                        {{-- <div class="card-body">
+                    {{-- <div class="card-body">
                             <ul class="container-fluid">
                                 @foreach ($products as $product)
                                     <li class="row row-cols-2 my-1">
@@ -114,7 +120,7 @@
                                         </a>
 
                                         {{-- edit part --}}
-                                        {{-- <div class="edit col-2 row row-cols-2">
+                    {{-- <div class="edit col-2 row row-cols-2">
                                             <a href="{{route('admin.products.edit', ['product' => $product->slug ])}}" class="btn btn-primary col-auto"><i class="fa-solid fa-pencil"></i></a>
                                             <form action="{{route('admin.products.destroy',['product'=>$product->slug])}}" method="post">
                                                 @csrf
