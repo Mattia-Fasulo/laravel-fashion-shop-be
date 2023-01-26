@@ -27,7 +27,7 @@ class ProductController extends Controller
         if (!empty($request->query('prova'))) {
             // dd($request->query('prova'));
             $myQuery = $request->query('prova');
-            $products = Product::where('name', $myQuery)->get();
+            $products = Product::where('name', 'like', "$myQuery%")->get();
         } else {
             $products = Product::all();
 

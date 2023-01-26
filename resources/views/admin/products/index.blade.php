@@ -31,8 +31,13 @@
                             <thead>
                                 <tr class="text-white">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name
+                                        <form action="{{ route('admin.products.index') }}" method="GET">
+                                            @csrf
+                                            <input type="text" hidden name="nameOrder" id="nameOrder" value="">
+                                        </form>
+                                    </th>
                                     <th scope="col">Customer</th>
                                     <th scope="col">Type</th>
                                     <th scope="col">Texture</th>
