@@ -38,4 +38,8 @@ body{
         outline: 2px solid $red;
         outline-offset: 4px;
     }
+    select, input{
+
+        text-transform: capitalize;
+    }
 }

@@ -33,7 +33,7 @@
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" >{{ old('description', $product->description) }}
+                        <textarea class="form-control" id="description" name="description">{{ old('description', $product->description) }}
                         </textarea>
                     </div>
 
@@ -67,9 +67,8 @@
                                     <label for="type_id" class="form-label">Select Type</label>
                                     <select name="type_id" id="type_id"
                                         class="form-control @error('type_id') is-invalid @enderror" required>
-                                        <option value="">Select type</option>
                                         @foreach ($types as $type)
-                                            <option value="{{ $type->id }}">
+                                            <option value="{{ $type->id }}" {{ $type->id == old('type_id', $product->type_id) ? 'selected' : '' }}>
                                                 {{ $type->name }}
                                             </option>
                                         @endforeach
@@ -85,9 +84,8 @@
                                     <label for="brand_id" class="form-label">Select Brand</label>
                                     <select name="brand_id" id="brand_id"
                                         class="form-control @error('brand_id') is-invalid @enderror" required>
-                                        <option value="">Select brand</option>
                                         @foreach ($brands as $brand)
-                                            <option value="{{ $brand->id }}">
+                                            <option value="{{ $brand->id }}" {{ $brand->id == old('brand_id', $product->brand_id) ? 'selected' : '' }}>
                                                 {{ $brand->name }}
                                             </option>
                                         @endforeach
@@ -103,9 +101,9 @@
                                     <label for="texture_id" class="form-label">Select Texture</label>
                                     <select name="texture_id" id="texture_id"
                                         class="form-control @error('texture_id') is-invalid @enderror" required>
-                                        <option value="">Select texture</option>
+
                                         @foreach ($textures as $texture)
-                                            <option value="{{ $texture->id }}">
+                                            <option value="{{ $texture->id }}" {{ $texture->id == old('texture_id', $product->texture_id) ? 'selected' : '' }}>
                                                 {{ $texture->name }}
                                             </option>
                                         @endforeach
@@ -114,26 +112,26 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="d-flex gap-1">
+                                <div class="">
+                                    <label class="form-check-label d-block" for="price">Price</label>
                                     {{-- price input --}}
-                                    <div class="">
-                                        {{-- <label class="form-check-label d-block" for="price">Price</label> --}}
-                                        <input placeholder="price" id="price" name="price" type=number class="form-control" step=0.01 min="0"/>
-                                    </div>
-        
-                                    {{-- seleziona valuta (currenty) --}}
-                                    <div class=" ">
-        
-                                        <select name="price_sign" id="price_sign"
-                                            class="form-control text-center @error('price_sign') is-invalid @enderror" required>
-                                            <option value="$" > $ </option>
-                                            <option value="£"> £ </option>
-                                            <option value="€" selected> € </option>
-        
-                                        </select>
-                                        @error('price_sign')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                                    <div class="d-flex gap-1">
+                                        <div class="">
+                                        
+                                            <input placeholder="price" id="price" name="price" type=number class="form-control" step=0.01 min="0" value="{{$product->price}}"/>
+                                        </div>
+                                        {{-- seleziona valuta (currenty) --}}
+                                        <div class=" ">
+                                            <select name="price_sign" id="price_sign"
+                                                class="form-control text-center @error('price_sign') is-invalid @enderror" required>
+                                                <option value="$" > $ </option>
+                                                <option value="£"> £ </option>
+                                                <option value="€" selected> € </option>
+                                            </select>
+                                            @error('price_sign')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -161,26 +159,6 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-check-label d-block" for="price">Price</label>
-                            <input id="price" name="price" type=number step=0.01 value="{{ old('price', $product->price) }}" required >
-                        </div>
-
-                        <div class="mb-3 w-25">
-
-                            <select name="price_sign" id="price_sign"
-                                class="form-control @error('price_sign') is-invalid @enderror" required>
-                                <option value="">Select price sign</option>
-
-                                <option value="$" {{ old('price_sign', $product->price_sign) == '$' ? 'selected' : '' }}> $ </option>
-                                <option value="£" {{ old('price_sign', $product->price_sign) == '£' ? 'selected' : '' }}> £ </option>
-                                <option value="€" {{ old('price_sign', $product->price_sign) == '€' ? 'selected' : '' }}> € </option>
-
-                            </select>
-                            @error('price_sign')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
 
 
                         <button type="submit" class="btn btn-dark">Submit</button>
