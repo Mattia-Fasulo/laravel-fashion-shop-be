@@ -37,75 +37,110 @@
                         </textarea>
                     </div>
 
-                    <div >
+                    <div>
+                        {{-- image n preview --}}
 
-                        <label for="cover_image" class="form-label">Insert an Image</label>
-                        {{-- <input type="file" name="cover_image" id="create_cover_image"
-                            class="form-control  @error('cover_image') is-invalid @enderror"> --}}
-                        <div class=" mb-3 w-50">
-                            <div>
-                                <input type="file" name="cover_image" id="cover_image"
-                                    class="form-control  @error('cover_image') is-invalid @enderror">
-                                @error('cover_image')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            @if ($product->cover_image)
-                                <div class="media my-2">
-                                    <img class="shadow" width="150" src="{{ asset('storage/' . $product->cover_image) }}"
-                                    alt="{{ $product->name }}">
+
+                        <div class="row pb-3 imgNselect">
+                            <div class="col-6" >
+                                <div class="d-flex flex-column">
+                                    <div class="pb-3">
+                                        <label for="cover_image" class="form-label">Insert an Image</label>
+                                            <input type="file" name="cover_image" id="cover_image"
+                                                class="form-control  @error('cover_image') is-invalid @enderror">
+                                            @error('cover_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                    <div class="media">
+                                        <div class="py-2">
+                                            <img id="uploadPreview" src="{{ asset('storage/' . $product->cover_image) }}"
+                                            alt="{{ $product->name }}">
+                                        </div>                                       
+                                    </div>
                                 </div>
-                            @endif
-
-                        </div>
-
-                        <div class="mb-3 w-25">
-                            <label for="type_id" class="form-label">Select Type</label>
-                            <select name="type_id" id="type_id"
-                                class="form-control @error('type_id') is-invalid @enderror" required>
-                                <option value="">Select type</option>
-                                @foreach ($types as $type)
-                                    <option value="{{ $type->id }}" {{ $type->id == $product->type_id ? 'selected' : '' }}>
-                                        {{ $type->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('type_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3 w-25">
-                            <label for="brand_id" class="form-label">Select Brand</label>
-                            <select name="brand_id" id="brand_id"
-                                class="form-control @error('brand_id') is-invalid @enderror" required>
-                                <option value="">Select brand</option>
-                                @foreach ($brands as $brand)
-                                    <option class="text-capitalize" value="{{ $brand->id }}" {{ $brand->id }}" {{ $brand->id == $product->brand_id ? 'selected' : '' }}>
-                                        {{ $brand->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('brand_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3 w-25">
-                            <label for="texture_id" class="form-label">Select Texture</label>
-                            <select name="texture_id" id="texture_id"
-                                class="form-control @error('texture_id') is-invalid @enderror" required>
-                                <option value="">Select texture</option>
-                                @foreach ($textures as $texture)
-                                    <option class="text-capitalize" value="{{ $texture->id }}" {{ $texture->id }}" {{ $texture->id == $product->texture_id ? 'selected' : '' }}>
-                                        {{ $texture->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('texture_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            </div>
+        
+                            <div class="col-6 d-flex flex-column justify-content-between"> 
+                                
+                                {{-- select type  --}}
+                                
+                                <div class="">
+                                    <label for="type_id" class="form-label">Select Type</label>
+                                    <select name="type_id" id="type_id"
+                                        class="form-control @error('type_id') is-invalid @enderror" required>
+                                        <option value="">Select type</option>
+                                        @foreach ($types as $type)
+                                            <option value="{{ $type->id }}">
+                                                {{ $type->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('type_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+        
+                                {{-- select brand --}}
+                                
+                                <div class="">
+                                    <label for="brand_id" class="form-label">Select Brand</label>
+                                    <select name="brand_id" id="brand_id"
+                                        class="form-control @error('brand_id') is-invalid @enderror" required>
+                                        <option value="">Select brand</option>
+                                        @foreach ($brands as $brand)
+                                            <option value="{{ $brand->id }}">
+                                                {{ $brand->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('brand_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+        
+                                {{-- select texture --}}
+                                
+                                <div class="">
+                                    <label for="texture_id" class="form-label">Select Texture</label>
+                                    <select name="texture_id" id="texture_id"
+                                        class="form-control @error('texture_id') is-invalid @enderror" required>
+                                        <option value="">Select texture</option>
+                                        @foreach ($textures as $texture)
+                                            <option value="{{ $texture->id }}">
+                                                {{ $texture->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('texture_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="d-flex gap-1">
+                                    {{-- price input --}}
+                                    <div class="">
+                                        {{-- <label class="form-check-label d-block" for="price">Price</label> --}}
+                                        <input placeholder="price" id="price" name="price" type=number class="form-control" step=0.01 min="0"/>
+                                    </div>
+        
+                                    {{-- seleziona valuta (currenty) --}}
+                                    <div class=" ">
+        
+                                        <select name="price_sign" id="price_sign"
+                                            class="form-control text-center @error('price_sign') is-invalid @enderror" required>
+                                            <option value="$" > $ </option>
+                                            <option value="£"> £ </option>
+                                            <option value="€" selected> € </option>
+        
+                                        </select>
+                                        @error('price_sign')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        
 
                         {{-- ------------------colori-------------- --}}
 
