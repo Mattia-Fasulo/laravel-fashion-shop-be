@@ -14,9 +14,9 @@
             </div>
             @endif
         </div> --}}
-    <div class="container mt-3 ">
+    <div class="container mt-3 " id="editProd">
         <h1 class="mx-4">Edit Product</h1>
-        <div class="row bg-white">
+        <div class="row bg-secondary">
             <div class="col-12">
                 <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" class="p-4" enctype="multipart/form-data">
                     @csrf
@@ -43,21 +43,19 @@
                         {{-- <input type="file" name="cover_image" id="create_cover_image"
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
-                            @if ($product->cover_image)
-                                <div class="media">
-                                    <img class="shadow" width="150" src="{{ asset('storage/' . $product->cover_image) }}"
-                                    alt="{{ $product->name }}">
-                                </div>
-                            @endif
-                            <div >
-
+                            <div>
                                 <input type="file" name="cover_image" id="cover_image"
                                     class="form-control  @error('cover_image') is-invalid @enderror">
                                 @error('cover_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-
+                            @if ($product->cover_image)
+                                <div class="media my-2">
+                                    <img class="shadow" width="150" src="{{ asset('storage/' . $product->cover_image) }}"
+                                    alt="{{ $product->name }}">
+                                </div>
+                            @endif
 
                         </div>
 
@@ -83,7 +81,7 @@
                                 class="form-control @error('brand_id') is-invalid @enderror" required>
                                 <option value="">Select brand</option>
                                 @foreach ($brands as $brand)
-                                    <option value="{{ $brand->id }}" {{ $brand->id }}" {{ $brand->id == $product->brand_id ? 'selected' : '' }}>
+                                    <option class="text-capitalize" value="{{ $brand->id }}" {{ $brand->id }}" {{ $brand->id == $product->brand_id ? 'selected' : '' }}>
                                         {{ $brand->name }}
                                     </option>
                                 @endforeach
@@ -99,7 +97,7 @@
                                 class="form-control @error('texture_id') is-invalid @enderror" required>
                                 <option value="">Select texture</option>
                                 @foreach ($textures as $texture)
-                                    <option value="{{ $texture->id }}" {{ $texture->id }}" {{ $texture->id == $product->texture_id ? 'selected' : '' }}>
+                                    <option class="text-capitalize" value="{{ $texture->id }}" {{ $texture->id }}" {{ $texture->id == $product->texture_id ? 'selected' : '' }}>
                                         {{ $texture->name }}
                                     </option>
                                 @endforeach
@@ -111,12 +109,12 @@
 
                         {{-- ------------------colori-------------- --}}
 
-                         <div class="mb-3">
+                         <div class="mb-3 container-fluid">
                              <label for="color" class="form-label">Select Color</label> <br>
                             {{-- @foreach ($colors as $color) --}}
-                                <div class="form-check form-check-inline ">
+                                <div class=" row row-cols-4">
                                         @foreach ($colors as $color)
-                                            <div class="form-check form-switch">
+                                            <div class="col form-check form-switch">
                                                 <input class="form-check-input rounded-pill" type="checkbox" id="color-{{$color->id}}"  name="colors[]" value="{{$color->id}}" @foreach($product->colors as $prod_color){{{$prod_color->id == $color->id ? 'checked' : ''}}}@endforeach>
                                                 <label class="form-check-label" for="color-{{$color->id}}">{{$color->name}} <i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></label>
                                             
@@ -124,14 +122,6 @@
                                             </div>
                                         @endforeach
                                 </div>
-
-                                {{-- <select class="form-select" id="multiple-select-field" data-placeholder="Choose anything" multiple>
-                                    @foreach ($colors as $color)
-                                        <option>{{$color->name}}<i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></option>
-                                    @endforeach
-                                </select> --}}
-
-                               @include('admin.partials.multi')
                             {{-- @endforeach --}}
                             @error('color')
                                 <div class="alert alert-danger">{{ $message }}</div>
