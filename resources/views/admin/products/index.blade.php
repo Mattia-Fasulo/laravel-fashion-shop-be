@@ -29,10 +29,10 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Customer</th>
-                                        <th scope="col">Controls</th>
-                                        <th scope="col">Texture</th>
                                         <th scope="col">Type</th>
-                                        <th scope="col">View</th>
+                                        <th scope="col">Texture</th>
+                                        <th scope="col" class="text-center">View</th>
+                                        <th scope="col" class="text-center">Controls</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,9 +68,9 @@
                                         </td>
                                         <td><span title="Texture">{{ $product->texture->name ?? '' }}</span></td>
                                         <td><span title="Texture">{{ $product->type->name ?? '' }}</span></td>
-                                        <td><a class="btn btn-sm btn-primary"
+                                        <td class="text-center"><a class="btn btn-sm btn-primary "
                                                 href="{{ route('admin.products.show', $product->slug) }}">Detail</a></td>
-                                        <td class="d-flex gap-3 justify-content-center">
+                                        <td class="d-flex gap-3 justify-content-center text-center">
                                             <a href="{{ route('admin.products.edit', ['product' => $product->slug]) }}"
                                                 class="btn btn-dark"><i class="fas fa-pencil-alt"></i></a>
                                             <div class="edit">
@@ -126,9 +126,9 @@
                                         @include('partials.modal-delete')
                                     </li>
                                 {{-- @endforeach --}}
-                        
-                        
-                                
+
+
+
                 </div>
             </div>
         </div>
