@@ -24,36 +24,33 @@ class ProductController extends Controller
         $types = Type::all();
         $brands = Brand::all();
         $textures = Texture::all();
-        if (!empty($request->query('prova'))) {
-            // dd($request->query('prova'));
-            $myQuery = $request->query('prova');
-            $products = Product::where('name', 'like', "$myQuery%")->get();
-        } else {
-            $products = Product::all();
-
-            // dd($products);
+        if ($request) {
+            if (!empty($request->query('prova'))) {
+                // dd($request->query('prova'));
+                $myQuery = $request->query('prova');
+                $products = Product::where('name', 'like', "$myQuery%")->get();
+            } elseif (!empty($request->query('idOrder'))) {
+                // dd($request->query('idOrder'));
+                $myQuery = $request->query('idOrder');
+                $products = Product::orderBy('id', $myQuery)->get();
+                // dd($products);
+            } elseif (!empty($request->query('nameOrder'))) {
+                // dd($request->query('prova'));
+                $myQuery = $request->query('nameOrder');
+                $products = Product::orderBy('name', $myQuery)->get();
+                // dd($request);
+            } elseif (!empty($request->query('brandOrder'))) {
+                // dd($request->query('prova'));
+                $myQuery = $request->query('brandOrder');
+                $products = Product::orderBy('brand_id', $myQuery)->get();
+            } else {
+                $products = Product::all();
+                // dd($products);
+            }
         }
 
-        if (!empty($request->query('idOrder'))) {
-            // dd($request->query('idOrder'));
-            $myQuery = $request->query('idOrder');
-            $products = Product::orderBy('name', $myQuery)->get();
-        } else {
-            $products = Product::all();
 
-            // dd($products);
-        }
-        if (!empty($request->query('nameOrder'))) {
-            // dd($request->query('prova'));
-            $myQuery = $request->query('nameOrder');
-            $products = Product::orderBy('name', $myQuery)->get();
-        } else {
-            $products = Product::all();
-
-            // dd($products);
-        }
-
-        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'));
+        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'))->with('prova', $request->query('prova'));;
     }
 
     /**

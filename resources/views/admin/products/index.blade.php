@@ -8,8 +8,8 @@
 
                 <div class="col-12">
                     <form action="{{ route('admin.products.index') }}" method="GET">
-                        @csrf
-                        <input type="text" name="prova" id="prova">
+                        
+                        <input type="text" name="prova" id="prova" value="{{session()->has('prova') ? session()->get('prova') : ''}}">
                         <button type="submit" class="btn btn-dark">Submit</button>
                     </form>
 
@@ -34,16 +34,16 @@
                                         {{-- <input class="form-check-input" type="checkbox"> --}}
                                     </th>
                                     <th scope="col">
-                                        <div class="d-flex justify-content-between ">
+                                        <div class="d-flex justify-content-between align-items-center ">
                                             <span>ID</span>
                                             <span class="d-flex">
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    @csrf
+                                                    
                                                     <input type="text" hidden name="idOrder" id="idOrder" value="ASC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
                                                 </form>
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    @csrf
+                                                    
                                                     <input type="text" hidden name="idOrder" id="idOrder" value="DESC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
                                                 </form>
@@ -51,23 +51,39 @@
                                         </div>
                                     </th>
                                     <th scope="col">
-                                        <div class="d-flex justify-content-between ">
+                                        <div class="d-flex justify-content-between align-items-center ">
                                             <span>Name</span>
                                             <span class="d-flex">
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    @csrf
+                                                    
                                                     <input type="text" hidden name="nameOrder" id="nameOrder" value="ASC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
                                                 </form>
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    @csrf
+                                                    
                                                     <input type="text" hidden name="nameOrder" id="nameOrder" value="DESC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
                                                 </form>
                                             </span>
                                         </div>
                                     </th>
-                                    <th scope="col">Customer</th>
+                                    <th scope="col">
+                                        <div class="d-flex justify-content-between align-items-center ">
+                                            <span>Brand</span>
+                                            <span class="d-flex">
+                                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                                    
+                                                    <input type="text" hidden name="brandOrder" id="brandOrder" value="ASC">
+                                                    <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
+                                                </form>
+                                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                                    
+                                                    <input type="text" hidden name="brandOrder" id="brandOrder" value="DESC">
+                                                    <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
+                                                </form>
+                                            </span>
+                                        </div>
+                                    </th>
                                     <th scope="col">Type</th>
                                     <th scope="col">Texture</th>
                                     <th scope="col" class="text-center">View</th>
