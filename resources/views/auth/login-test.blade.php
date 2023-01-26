@@ -88,7 +88,8 @@
                             {{-- <a href="">Forgot Password</a> --}}
                         </div>
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">{{ __('Login') }}</button>
-                        {{-- <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p> --}}
+                        <p class="text-center mb-0">Don't have an Account? <a href="{{route('register')}}">Sign Up</a></p>
+
                         </form>
                     </div>
                 </div>
