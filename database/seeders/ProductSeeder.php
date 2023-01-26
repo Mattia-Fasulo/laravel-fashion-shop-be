@@ -18,8 +18,8 @@ class ProductSeeder extends Seeder
     public function run()
     {
         //il codice sotto va decommentato se si vuole evitare il blocco della foreignKey 
-        // DB::statement("SET foreign_key_checks = 0;");
-        // Product::truncate();
+        DB::statement("SET foreign_key_checks = 0;");
+        Product::truncate();
 
         $products = config('dataseeder.products');
 
@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
             $new_product->cover_image = ProductSeeder::storeimage($product['api_featured_image']);
             $new_product->save();
 
-            // DB::statement("SET foreign_key_checks = 1;");
+            DB::statement("SET foreign_key_checks = 1;");
         }
     }
 
