@@ -20,10 +20,13 @@ body{
 //     }
 // }
 // $secondary: #fa0202;
-#editProd{
+#editProd, #createProd{
     input, textarea, select{
         background-color: $black;
         color: $input-text;
         border-radius: 0.5rem;
+    }
+    #uploadPreview{
+        max-width: 100%;
     }
 }

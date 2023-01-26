@@ -15,8 +15,8 @@
             @endif
         </div> --}}
     <div class="container mt-3 " id="editProd">
-        <h1 class="mx-4">Edit Product</h1>
-        <div class="row bg-secondary">
+        <h1 class="px-4">Edit Product</h1>
+        <div class="row bg-secondary rounded-3">
             <div class="col-12">
                 <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" class="p-4" enctype="multipart/form-data">
                     @csrf
