@@ -1,3 +1,4 @@
+@use './partials/variables' as *;
 // @import '~bootstrap/scss/bootstrap';
 
 // $fa-font-path:"../webfonts";
@@ -10,7 +11,6 @@
 
 
 body{
-    background-color: antiquewhite !important;
     color: white;
 }
 // .sidebar{
@@ -20,4 +20,30 @@ body{
 //     }
 // }
 // $secondary: #fa0202;
+#editProd, #createProd{
+    input, textarea, select{
+        background-color: $black;
+        color: $input-text;
+        border-radius: 0.5rem;
+    }
+    .imgNselect{
 
+        .col-4{
+            max-height: 330px;
+        }
+    }
+    #uploadPreview{
+        // border-radius
+        max-height: calc(330px - 90px);
+        outline: 2px solid $red;
+        outline-offset: 4px;
+    }
+    select, input{
+
+        text-transform: capitalize;
+    }
+}
+
+.color-circle {
+    margin-top: 3px;
+}
