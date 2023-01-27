@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function home()
     {
 
-        $products = Product::inRandomOrder()->limit(5)->get();
+        $products = Product::inRandomOrder()->limit(12)->get();
         return response()->json([
             'success' => true,
             'results' => $products
