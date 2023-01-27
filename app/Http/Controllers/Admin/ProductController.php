@@ -21,6 +21,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+
         $types = Type::all();
         $brands = Brand::all();
         $textures = Texture::all();
@@ -49,8 +50,8 @@ class ProductController extends Controller
             }
         }
 
-
-        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'))->with('prova', "$request->query('prova')");;
+        // return redirect()->route('admin.products.index', ['prova'=>$myQuery]);
+        return view('admin.products.index', compact('products', 'types', 'brands', 'textures'));
     }
 
     /**

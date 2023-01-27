@@ -8,10 +8,16 @@
 
                 <div class="col-12">
                     <form action="{{ route('admin.products.index') }}" method="GET">
-                        
+
                         <input type="text" name="prova" id="prova" value="{{session()->has('prova') ? session()->get('prova') : ''}}">
                         <button type="submit" class="btn btn-dark">Submit</button>
                     </form>
+
+                    @if (session()->has('prova'))
+                        <div class="alert alert-success mx-2 mb-3">
+                            {{ session()->get('prova') }}
+                        </div>
+                    @endif
 
                     @if (session()->has('message'))
                         <div class="alert alert-success mx-2 mb-3">
@@ -38,12 +44,12 @@
                                             <span>ID</span>
                                             <span class="d-flex">
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    
+
                                                     <input type="text" hidden name="idOrder" id="idOrder" value="ASC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
                                                 </form>
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    
+
                                                     <input type="text" hidden name="idOrder" id="idOrder" value="DESC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
                                                 </form>
@@ -55,12 +61,12 @@
                                             <span>Name</span>
                                             <span class="d-flex">
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    
+
                                                     <input type="text" hidden name="nameOrder" id="nameOrder" value="ASC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
                                                 </form>
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    
+
                                                     <input type="text" hidden name="nameOrder" id="nameOrder" value="DESC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
                                                 </form>
@@ -72,12 +78,12 @@
                                             <span>Brand</span>
                                             <span class="d-flex">
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    
+
                                                     <input type="text" hidden name="brandOrder" id="brandOrder" value="ASC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-down"></i></button>
                                                 </form>
                                                 <form action="{{ route('admin.products.index') }}" method="GET">
-                                                    
+
                                                     <input type="text" hidden name="brandOrder" id="brandOrder" value="DESC">
                                                     <button class="btn" type="submit"><i class="fas fa-arrow-up"></i></button>
                                                 </form>
@@ -86,6 +92,7 @@
                                     </th>
                                     <th scope="col">Type</th>
                                     <th scope="col">Texture</th>
+                                    <th scope="col">Color</th>
                                     <th scope="col" class="text-center">View</th>
                                     <th scope="col" class="text-center">Controls</th>
                                 </tr>
@@ -124,7 +131,8 @@
                                         <td><span title="Type">{{ $product->type->name ?? '' }}</span></td>
                                         <td><span title="Texture"
                                                 class="text-capitalize">{{ $product->texture->name ?? '' }}</span></td>
-                                        <td class="text-center"><a class="btn btn-sm btn-primary "
+                                        <td class="text-center">{{ $product->colors && count($product->colors) > 0 ? count($product->colors) : 0 }}</td>
+                                        <td class="text-center"><a class="btn btn-sm btn-light "
                                                 href="{{ route('admin.products.show', $product->slug) }}">Detail</a></td>
                                         <td class="d-flex gap-3 justify-content-center text-center">
                                             <a href="{{ route('admin.products.edit', ['product' => $product->slug]) }}"
