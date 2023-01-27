@@ -31,21 +31,21 @@ class ProductController extends Controller
             if (!empty($request->query('prova'))) {
                 // dd($request->query('prova'));
                 $myQuery = $request->query('prova');
-                $products = Product::where('name', 'like', "$myQuery%")->get();
+                $products = Product::where('name', 'like', "$myQuery%")->paginate(7);
             } elseif (!empty($request->query('idOrder'))) {
                 // dd($request->query('idOrder'));
                 $myQuery = $request->query('idOrder');
-                $products = Product::orderBy('id', $myQuery)->get();
+                $products = Product::orderBy('id', $myQuery)->paginate(7);
                 // dd($products);
             } elseif (!empty($request->query('nameOrder'))) {
                 // dd($request->query('prova'));
                 $myQuery = $request->query('nameOrder');
-                $products = Product::orderBy('name', $myQuery)->get();
+                $products = Product::orderBy('name', $myQuery)->paginate(7);
                 // dd($request);
             } elseif (!empty($request->query('brandOrder'))) {
                 // dd($request->query('prova'));
                 $myQuery = $request->query('brandOrder');
-                $products = Product::orderBy('brand_id', $myQuery)->get();
+                $products = Product::orderBy('brand_id', $myQuery)->paginate(7);
             } else {
                 $products = $products = Product::paginate(7);
                 // dd($products);
