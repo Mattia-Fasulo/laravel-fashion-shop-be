@@ -9,8 +9,10 @@ use App\Models\Type;
 use App\Models\Color;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -45,7 +47,7 @@ class ProductController extends Controller
                 $myQuery = $request->query('brandOrder');
                 $products = Product::orderBy('brand_id', $myQuery)->get();
             } else {
-                $products = Product::all();
+                $products = $products = Product::paginate(7);
                 // dd($products);
             }
         }

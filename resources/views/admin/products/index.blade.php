@@ -7,11 +7,7 @@
             <div class="row my-3 justify-content-center">
 
                 <div class="col-12">
-                    <form action="{{ route('admin.products.index') }}" method="GET">
 
-                        <input type="text" name="prova" id="prova" value="{{session()->has('prova') ? session()->get('prova') : ''}}">
-                        <button type="submit" class="btn btn-dark">Submit</button>
-                    </form>
 
                     @if (session()->has('prova'))
                         <div class="alert alert-success mx-2 mb-3">
@@ -33,6 +29,12 @@
                                 <h4 class="">Product list:</h4>
                                 <a href="{{ route('admin.products.create') }}" class="p-2 rounded"><i
                                         class="fas fa-plus"></i> Aggiungi Prodotto </a>
+                            </div>
+                            <div class="mb-3">
+                                <form action="{{ route('admin.products.index') }}" method="GET">
+                                    <input type="text" name="prova" id="prova" value="{{session()->has('prova') ? session()->get('prova') : ''}}">
+                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                </form>
                             </div>
                             <thead>
                                 <tr class="text-white">
@@ -197,4 +199,5 @@
             </div>
         </div>
     </section>
+    {{ $products->links('vendor.pagination.bootstrap-4') }}
 @endsection
