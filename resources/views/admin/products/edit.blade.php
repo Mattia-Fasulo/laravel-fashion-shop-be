@@ -54,15 +54,15 @@
                                     </div>
                                     <div class="media text-center">
                                             <img id="uploadPreview" src="{{ asset('storage/' . $product->cover_image) }}"
-                                            alt="{{ $product->name }}">                                      
+                                            alt="{{ $product->name }}">
                                     </div>
                                 </div>
                             </div>
-        
-                            <div class="col-6 d-flex flex-column justify-content-between"> 
-                                
+
+                            <div class="col-6 d-flex flex-column justify-content-between">
+
                                 {{-- select type  --}}
-                                
+
                                 <div class="">
                                     <label for="type_id" class="form-label">Select Type</label>
                                     <select name="type_id" id="type_id"
@@ -77,9 +77,9 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-        
+
                                 {{-- select brand --}}
-                                
+
                                 <div class="">
                                     <label for="brand_id" class="form-label">Select Brand</label>
                                     <select name="brand_id" id="brand_id"
@@ -94,9 +94,9 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-        
+
                                 {{-- select texture --}}
-                                
+
                                 <div class="">
                                     <label for="texture_id" class="form-label">Select Texture</label>
                                     <select name="texture_id" id="texture_id"
@@ -117,7 +117,7 @@
                                     {{-- price input --}}
                                     <div class="d-flex gap-1">
                                         <div class="">
-                                        
+
                                             <input placeholder="price" id="price" name="price" type=number class="form-control" step=0.01 min="0" value="{{$product->price}}"/>
                                         </div>
                                         {{-- seleziona valuta (currenty) --}}
@@ -135,8 +135,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>  
-                        
+                        </div>
+
 
                         {{-- ------------------colori-------------- --}}
 
@@ -148,8 +148,8 @@
                                             <div class="col form-check form-switch">
                                                 <input class="form-check-input rounded-pill" type="checkbox" id="color-{{$color->id}}"  name="colors[]" value="{{$color->id}}" @foreach($product->colors as $prod_color){{{$prod_color->id == $color->id ? 'checked' : ''}}}@endforeach>
                                                 <label class="form-check-label" for="color-{{$color->id}}">{{$color->name}} <i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></label>
-                                            
-                                            
+
+
                                             </div>
                                         @endforeach
                                 </div>
@@ -167,5 +167,9 @@
             </div>
         </div>
     </div>
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        bkLib.onDomLoaded(nicEditors.allTextAreas);
+    </script>
 
 @endsection
