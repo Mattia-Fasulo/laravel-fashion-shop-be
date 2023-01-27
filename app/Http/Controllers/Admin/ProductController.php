@@ -9,8 +9,10 @@ use App\Models\Type;
 use App\Models\Color;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -19,14 +21,38 @@ class ProductController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+
         $types = Type::all();
         $brands = Brand::all();
         $textures = Texture::all();
-        // dd($products);
+        if ($request) {
+            if (!empty($request->query('prova'))) {
+                // dd($request->query('prova'));
+                $myQuery = $request->query('prova');
+                $products = Product::where('name', 'like', "$myQuery%")->paginate(7);
+            } elseif (!empty($request->query('idOrder'))) {
+                // dd($request->query('idOrder'));
+                $myQuery = $request->query('idOrder');
+                $products = Product::orderBy('id', $myQuery)->paginate(7);
+                // dd($products);
+            } elseif (!empty($request->query('nameOrder'))) {
+                // dd($request->query('prova'));
+                $myQuery = $request->query('nameOrder');
+                $products = Product::orderBy('name', $myQuery)->paginate(7);
+                // dd($request);
+            } elseif (!empty($request->query('brandOrder'))) {
+                // dd($request->query('prova'));
+                $myQuery = $request->query('brandOrder');
+                $products = Product::orderBy('brand_id', $myQuery)->paginate(7);
+            } else {
+                $products = $products = Product::paginate(7);
+                // dd($products);
+            }
+        }
 
+        // return redirect()->route('admin.products.index', ['prova'=>$myQuery]);
         return view('admin.products.index', compact('products', 'types', 'brands', 'textures'));
     }
 

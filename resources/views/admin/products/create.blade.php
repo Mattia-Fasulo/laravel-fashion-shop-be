@@ -15,14 +15,14 @@
             </div>
             @endif
         </div> --}}
-        
+
     <div class="container mt-3 bg-dark " id="createProd">
         <h1 class="px-4">Create Product</h1>
         <div class="row bg-secondary rounded-3">
             <div class="col-12">
                 <div class="p-4" >
-                
-                
+
+
                 <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                 {{-- input nome prodotto  --}}
@@ -35,15 +35,15 @@
                         @enderror
                         <div class="form-text">* Minimum 3 characters and maximum 150 characters</div>
                 </div>
-                
+
                 <div id="description" class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea class="form-control" id="description" name="description" rows="10" ></textarea>
                 </div>
 
-                
+
                 {{-- input immagine con preview  --}}
-                
+
                 <div class="row pb-3 imgNselect">
                     <div class="col-6" >
                         <div class="d-flex flex-column">
@@ -61,10 +61,10 @@
                         </div>
                     </div>
 
-                    <div class="col-6 d-flex flex-column justify-content-between"> 
-                                
+                    <div class="col-6 d-flex flex-column justify-content-between">
+
                         {{-- select type  --}}
-                        
+
                         <div>
                             <label for="type_id" class="form-label">Select Type</label>
                             <select name="type_id" id="type_id"
@@ -82,7 +82,7 @@
                         </div>
 
                         {{-- select brand --}}
-                        
+
                         <div>
                             <label for="brand_id" class="form-label">Select Brand</label>
                             <select name="brand_id" id="brand_id"
@@ -100,7 +100,7 @@
                         </div>
 
                         {{-- select texture --}}
-                        
+
                         <div>
                             <label for="texture_id" class="form-label">Select Texture</label>
                             <select name="texture_id" id="texture_id"
@@ -139,9 +139,9 @@
                             </div>
                         </div>
                     </div>
-                </div>  
-                
-                
+                </div>
+
+
                 {{-- ------------------colori-------------- --}}
                 <div class="mb-3 container-fluid">
                     <label for="color" class="form-label">Select Color</label> <br>
@@ -151,8 +151,8 @@
                                    <div class="col form-check form-switch">
                                        <input class="form-check-input rounded-pill" type="checkbox" id="color-{{$color->id}}"  name="colors[]" value="{{$color->id}}">
                                        <label class="form-check-label" for="color-{{$color->id}}">{{$color->name}} <i class="fas fa-circle" style="color: {{$color->hex_value }}"></i></label>
-                                   
-                                   
+
+
                                    </div>
                                @endforeach
                        </div>
@@ -164,10 +164,14 @@
                     <button type="submit" class="btn btn-dark">Submit</button>
                     <button type="reset" class="btn btn-light border-dark">Reset</button>
                 </form>
-                    
-                
+
+
             </div>
         </div>
     </div>
     </div>
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        bkLib.onDomLoaded(nicEditors.allTextAreas);
+    </script>
 @endsection

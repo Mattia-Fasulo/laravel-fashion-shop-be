@@ -20,6 +20,9 @@ body{
 //     }
 // }
 // $secondary: #fa0202;
+
+
+
 #editProd, #createProd{
     input, textarea, select{
         background-color: $black;
@@ -46,4 +49,9 @@ body{
 
 .color-circle {
     margin-top: 3px;
+}
+
+
+#nav-pagination {
+    right: 0;
 }

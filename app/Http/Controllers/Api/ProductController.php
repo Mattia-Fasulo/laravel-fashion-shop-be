@@ -9,8 +9,22 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+
+    public function home()
+    {
+
+        $products = Product::inRandomOrder()->limit(5)->get();
+        return response()->json([
+            'success' => true,
+            'results' => $products
+        ]);
+    }
+
+
+
     public function index()
     {
+
         $products = Product::with('brand', 'texture', 'type', 'colors')->get();
         return response()->json([
             'success' => true,
