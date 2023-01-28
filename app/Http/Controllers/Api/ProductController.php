@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\Texture;
+use App\Models\Type;
 
 class ProductController extends Controller
 {
@@ -20,10 +22,21 @@ class ProductController extends Controller
         ]);
     }
 
+    public function data()
+    {
+        $textures = Texture::all();
+        $brands = Brand::all();
+        $types = Type::all();
 
+        return response()->json([
+            'success' => true,
+            'results' => [$textures, $brands, $types]
+        ]);
+    }
 
     public function index()
     {
+
 
         $products = Product::with('brand', 'texture', 'type', 'colors')->get();
         return response()->json([
